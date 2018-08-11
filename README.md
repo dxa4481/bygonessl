@@ -13,10 +13,13 @@ To run the tool in MITM mode, make sure you accurately list the date you FIRST r
 ## Install
 Install with either
 ```
-pip install -r requirements.txt
+pip install bygonessl
 ```
 
-Or run the Dockerfile
+Or install the Dockerfile
+```
+docker build -t "bygonessl" .
+```
 
 ## Setup
 Set two environment variables for your facebook developer account:
@@ -48,5 +51,11 @@ Create a config file with the following:
 ## Run the tool
 Run the tool with the following:
 ```
-python bygonessl.py --config <pathToJsonFile>
+bygonessl --config <pathToJsonFile>
+```
+
+Or with docker:
+
+```
+docker run --env-file sourceme --rm -v $(pwd):/work -ti bygonessl bygonessl --config /work/exampleConfig.json
 ```

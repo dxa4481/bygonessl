@@ -34,7 +34,7 @@ def bygoneDOSTest(domains):
         now = datetime.datetime.now(pytz.UTC)
         req = requests.get(url)
         results = req.json()
-        print(len(results["data"]))
+        print(results)
         for result in results["data"]:
             goodUntil = dateutil.parser.parse(result["not_valid_after"])
             if goodUntil > now:
@@ -69,7 +69,6 @@ def main():
     if config["bygoneMITM"]:
         for domain in config["domains"]:
             bygoneMITMTest(domain["domain"], dateutil.parser.parse(domain["domainCreated"]))
-    #bygoneMITMTest(["feedbackgroop.com"])
 
 if __name__ == '__main__':
     main()
