@@ -1,5 +1,5 @@
 # BygoneSSL
-This tool detects the two classes of vulnerability defined at [insecure.design](https://insecure.design)
+This tool detects the two classes of vulnerability defined at
 
 The tool can be ran to detect either Man In The Middle, or Denial of Service
 

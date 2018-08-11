@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='bygonessl',
     version='0.0.1',
-    description='A tool to descover bygonessl vulnerabilities',
+    description='A tool to discover bygonessl vulnerabilities',
     url='https://github.com/dxa4481/bygonessl',
     author='Dylan Ayrey',
     author_email='dxa4481@rit.edu',
