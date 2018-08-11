@@ -1,0 +1,10 @@
+{
+    "domains": [
+        {
+            "domain": "insecure.design",
+            "domainCreated": "2018-04-10T23:59:59+0000"
+        }
+    ],
+    "bygoneDOS": true,
+    "bygoneMITM": true
+}
