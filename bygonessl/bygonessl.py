@@ -19,6 +19,10 @@ def bygoneMITMTest(domain, domainCreated):
     url = "https://graph.facebook.com/certificates?query={}&fields=cert_hash_sha256,not_valid_after,not_valid_before&access_token={}&limit=5000".format(domain, app_token)
     req = requests.get(url)
     results = req.json()
+    if "error" in results:
+        if results["error"]["code"] == 4:
+            print("Looks like you exceeded the facebook rate limit. Try again in 5 mins or so")
+            sys.exit()
     now = datetime.datetime.now(pytz.UTC)
     for result in results["data"]:
         goodUntil = dateutil.parser.parse(result["not_valid_after"])
@@ -34,6 +38,10 @@ def bygoneDOSTest(domains):
         now = datetime.datetime.now(pytz.UTC)
         req = requests.get(url)
         results = req.json()
+        if "error" in results:
+            if results["error"]["code"] == 4:
+                print("Looks like you exceeded the facebook rate limit. Try again in 5 mins or so")
+                sys.exit()
         for result in results["data"]:
             goodUntil = dateutil.parser.parse(result["not_valid_after"])
             if goodUntil > now:
@@ -48,7 +56,7 @@ def bygoneDOSTest(domains):
                     domainIsOwned = True
                     break
             if not domainIsOwned:
-                print("BygoneSSL DoS detected on a cert with {} domains. Cert sha256: {}".format(len(cert[0]), cert[1]))
+                print("BygoneSSL DoS detected on a cert with {} domains. Cert sha256: {}".format(cert[0], cert[1]))
                 break
 
 def main():
