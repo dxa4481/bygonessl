@@ -34,7 +34,6 @@ def bygoneDOSTest(domains):
         now = datetime.datetime.now(pytz.UTC)
         req = requests.get(url)
         results = req.json()
-        print(results)
         for result in results["data"]:
             goodUntil = dateutil.parser.parse(result["not_valid_after"])
             if goodUntil > now:
