@@ -12,7 +12,7 @@ setup(
     install_requires=[
         'pytz==2018.5',
         'python-dateutil==2.7.3',
-        'requests==2.19.1'
+        'requests==2.20.0'
     ],
     entry_points = {
       'console_scripts': ['bygonessl = bygonessl.bygonessl:main'],
